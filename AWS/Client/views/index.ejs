@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Client</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Client for Andrango's REST service</h1><br>
+      <h3>Snacks:</h3>
+    </div>
+    
+    <div class="container">
+      <table id="tbl-snacks" class="table table-bordered table-dark">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">PRICE</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      "use strict";
+      let get_snacks = async () => {
+        let snacks;
+
+        await axios({
+          method: "get",
+          url: "http://ec2-54-237-0-234.compute-1.amazonaws.com:4002/readSnacks",
+          responseType: "json",
+        })
+          .then(function (res) {
+            snacks = res.data.snacks;
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+
+        return snacks;
+      };
+    </script>
+    <script>
+      "use strict";
+      const tbody = document.querySelector("#tbl-snacks tbody");
+
+      let show_data = async () => {
+        let snacks = await get_snacks();
+        tbody.innerHTML = "";
+
+        for (let i = 0; i < snacks.length; i++) {
+          let row = tbody.insertRow();
+          row.insertCell().innerHTML = snacks[i]["_id"];
+          row.insertCell().innerHTML = snacks[i]["name"];
+          row.insertCell().innerHTML = snacks[i]["price"];
+        }
+      };
+
+      show_data();
+    </script>
+  </body>
+</html>
