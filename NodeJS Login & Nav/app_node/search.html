@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript">
+      function readData() {
+        var archiveTxt = new XMLHttpRequest();
+        var path = "temp.txt";
+
+        archiveTxt.open("GET", path, false);
+        archiveTxt.send(null);
+
+        var data = archiveTxt.responseText;
+        if (data === "None") {
+          document.getElementById("data").innerHTML =
+            "<h3>No se encontró el usuario</h3>";
+        } else {
+          temp = data.split(" ");
+          document.getElementById("data").innerHTML =
+            "<p><strong>Nombre:</strong> " + temp[0] + "</p>"+
+            "<p><strong>Apellido:</strong> " + temp[1] + "</p>"+
+            "<p><strong>Usuario:</strong> " + temp[2] + "</p>"+
+            "<p><strong>Contraseña:</strong> " + temp[3] + "</p>"+ 
+            "<p><strong>Correo:</strong> " + temp[4] + "</p>";
+        }
+      }
+      window.onload = function () {
+        readData();
+      };
+    </script>
+    <title>Buscar usuario</title>
+  </head>
+  <body>
+    <div class="topnav" id="myTopnav">
+      <a href="/home">Inicio</a>
+      <a href="/create">Crear usuario</a>
+      <a href="/modify">Modificar usuario</a>
+      <a href="/delete">Eliminar usuario</a>
+      <a href="/exit" class="exit">Salir</a>
+      <form action="/search" method="post">
+        <input type="submit" value="Buscar" class="search" />
+        <input
+          type="text"
+          name="search"
+          placeholder="Usuario a buscar:"
+          id="search"
+          required
+        />
+      </form>
+    </div>
+    <div class="dateTime" id="dateTime"></div>
+    <div class="dateTime" id="activeUser"></div>
+    <div class="main">
+      <h1>Buscar usuario</h1>
+      <div id="data" class="data"></div>
+    </div>
+  </body>
+  <footer>
+    <p class="footer">Diseñado por Estefania :)</p>
+  </footer>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="script.js"></script>
+    <title>Eliminar usuario</title>
+  </head>
+  <body>
+    <div class="topnav" id="myTopnav">
+        <a href="/home">Inicio</a>
+        <a href="/create">Crear usuario</a>
+        <a href="/modify">Modificar usuario</a>
+        <a href="/delete" class="active">Eliminar usuario</a>
+        <a href="/exit" class="exit">Salir</a>
+        <form action="/search" method="post">
+            <input type="submit" value="Buscar" class="search" />
+            <input
+              type="text"
+              name="search"
+              placeholder="Usuario a buscar:"
+              id="search"
+              required
+            />
+          </form>
+      </div>
+      <div class="dateTime" id="dateTime"></div>
+      <div class="dateTime" id="activeUser"></div>
+      <div class="form">
+        <h1>Eliminar usuario</h1>
+        <form action="/deleteUser" method="post">
+          <input
+            type="text"
+            name="user"
+            id="user"
+            placeholder="Usuario"
+            autocomplete="no"
+            required
+          />
+          <input type="submit" value="Eliminar" />
+        </form>
+      </div>
+  </body>
+  <footer>
+    <p class="footer">Diseñado por Estefania :)</p>
+  </footer>
+</html>

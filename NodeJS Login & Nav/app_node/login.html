@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <div class="dateTime" id="dateTime"></div>
+    <div class="login">
+      <h1>Iniciar Sesión</h1>
+      <form action="/auth" method="post">
+        <label for="username">
+          <!-- font awesome icon -->
+          <i class="fas fa-user"></i>
+        </label>
+        <input
+          type="text"
+          name="username"
+          placeholder="Usuario"
+          id="username"
+          required
+        />
+        <label for="password">
+          <i class="fas fa-lock"></i>
+        </label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Contraseña"
+          id="password"
+          required
+        />
+        <a href="#">¿Olvidaste tu contraseña?</a>
+        <input type="submit" value="Iniciar sesión" />
+      </form>
+    </div>
+  </body>
+  <footer>
+    <p class="footer">Diseñado por Estefania :)</p>
+  </footer>
+</html>
